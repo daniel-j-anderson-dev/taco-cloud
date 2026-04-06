@@ -50,4 +50,14 @@ public class DesignTacoController {
     public void addIngredientsToModel(Model model) {
         model.addAllAttributes(INGREDIENTS_BY_KIND);
     }
+
+    @ModelAttribute(name = "tacoOrder")
+    public TacoOrder order() {
+        return new TacoOrder();
+    }
+
+    @ModelAttribute(name = "taco")
+    public Taco taco() {
+        return new Taco();
+    }
 }
