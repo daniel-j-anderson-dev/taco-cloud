@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class Ingredient {
-    private String id;
-    private String name;
-    private Kind kind;
+    private final String id;
+    private final String name;
+    private final Kind kind;
 
     public enum Kind {
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
