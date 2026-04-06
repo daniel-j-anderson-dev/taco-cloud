@@ -60,4 +60,9 @@ public class DesignTacoController {
     public Taco taco() {
         return new Taco();
     }
+
+    @GetMapping
+    public String showDesignForm() {
+        return "design";
+    }
 }
