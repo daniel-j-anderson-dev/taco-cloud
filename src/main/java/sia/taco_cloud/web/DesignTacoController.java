@@ -45,4 +45,9 @@ public class DesignTacoController {
                             .stream()
                             .filter(ingredient -> ingredient.getKind().equals(kind))
                             .collect(Collectors.toList())));
+
+    @ModelAttribute
+    public void addIngredientsToModel(Model model) {
+        model.addAllAttributes(INGREDIENTS_BY_KIND);
+    }
 }
