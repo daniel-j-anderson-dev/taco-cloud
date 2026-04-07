@@ -1,4 +1,4 @@
-package sia.taco_cloud.web;
+package tacos.web;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import sia.taco_cloud.Ingredient;
+import tacos.Ingredient;
 
 public class MockIngredientDataBase {
     private MockIngredientDataBase() {

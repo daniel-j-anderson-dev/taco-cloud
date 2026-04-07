@@ -1,4 +1,4 @@
-package sia.taco_cloud;
+package tacos;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
+
+import tacos.HomeController;
 
 @WebMvcTest(HomeController.class)
 public class HomeControllerTest {

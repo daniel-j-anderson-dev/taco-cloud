@@ -1,4 +1,4 @@
-package sia.taco_cloud.web;
+package tacos.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
-
-import sia.taco_cloud.Taco;
-import sia.taco_cloud.TacoOrder;
+import tacos.Taco;
+import tacos.TacoOrder;
 
 @Slf4j
 @Controller
