@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
-import tacos.Taco;
-import tacos.TacoOrder;
+import sia.taco_cloud.Taco;
+import sia.taco_cloud.TacoOrder;
 
 @Slf4j
 @Controller

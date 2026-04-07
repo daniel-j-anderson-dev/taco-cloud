@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import tacos.Ingredient;
+import sia.taco_cloud.Ingredient;
 
 public class MockIngredientDataBase {
     private MockIngredientDataBase() {
