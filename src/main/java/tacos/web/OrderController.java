@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController {
-    @GetMapping
+    @GetMapping("/current")
     public String orderForm() {
         return "orderForm";
     }
