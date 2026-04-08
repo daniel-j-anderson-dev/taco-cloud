@@ -41,7 +41,7 @@ public class TacoOrder {
     @Pattern(regexp = "^(0[1-9]|1[0-2])([\\/])([2-9][0-9])$", message = "must be MM/YY format")
     private String creditCardExpiration;
     
-    @Digits(integer = 3, fraction = 0, message = "")
+    @Digits(integer = 3, fraction = 0, message = "CVV must be 3 digits")
     private String creditCardValidationValue;
 
     private List<Taco> tacos = new ArrayList<>();
