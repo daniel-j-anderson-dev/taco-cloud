@@ -1,24 +1,21 @@
 package tacos.web;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import tacos.Ingredient;
-import tacos.data.MockFixedIngredientRepository;
+import tacos.data.IngredientRepository;
 
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
-    private Map<String, Ingredient> ingredientMap = new HashMap<>();
+    private IngredientRepository ingredientRepository;
 
-    public IngredientByIdConverter() {
-        this.ingredientMap = MockFixedIngredientRepository.INGREDIENT_BY_ID;
+    public IngredientByIdConverter(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
     }
 
     @Override
     public Ingredient convert(String id) {
-        return this.ingredientMap.get(id);
+        return this.ingredientRepository.findById(id).orElse(null);
     }
 }

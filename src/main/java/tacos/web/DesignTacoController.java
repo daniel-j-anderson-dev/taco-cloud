@@ -1,5 +1,8 @@
 package tacos.web;
 
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,17 +17,38 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
+import tacos.Ingredient;
 import tacos.Taco;
 import tacos.TacoOrder;
+import tacos.data.IngredientRepository;
 
 @Slf4j
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
+
+    private final IngredientRepository INGREDIENT_REPOSITORY;
+
+    @Autowired
+    public DesignTacoController(IngredientRepository ingredientRepository) {
+        this.INGREDIENT_REPOSITORY = ingredientRepository;
+    }
+
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        model.addAllAttributes(MockIngredientDataBase.INGREDIENTS_BY_KIND);
+        var ingredients = this.INGREDIENT_REPOSITORY.findAll();
+        var ingredients_by_kind = Ingredient.Kind
+                .valuesStream()
+                .collect(Collectors.toMap(
+                        // key producer
+                        kind -> kind.toString().toLowerCase(),
+                        // value producer
+                        kind -> ingredients
+                                .stream()
+                                .filter(ingredient -> ingredient.getKind().equals(kind))
+                                .collect(Collectors.toList())));
+        model.addAllAttributes(ingredients_by_kind);
     }
 
     @ModelAttribute(name = "tacoOrder")
