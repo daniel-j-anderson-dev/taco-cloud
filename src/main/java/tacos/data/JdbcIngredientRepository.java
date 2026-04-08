@@ -34,8 +34,11 @@ public class JdbcIngredientRepository implements IngredientRepository {
 
     @Override
     public Optional<Ingredient> findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        var results = this.jdbcTemplate.query(
+                "select id, name, kind from Ingredient where id = ?",
+                JdbcIngredientRepository::rowToIngredient,
+                id);
+        return results.isEmpty() ? Optional.empty() : Optional.of(results.getFirst());
     }
 
     @Override
