@@ -2,6 +2,7 @@ package tacos.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class JdbcIngredientRepository implements IngredientRepository {
     }
 
     @Override
-    public Iterable<Ingredient> findAll() {
+    public List<Ingredient> findAll() {
         return this.jdbcTemplate.query(
                 "select id, name, kind from Ingredient",
                 JdbcIngredientRepository::rowToIngredient);
