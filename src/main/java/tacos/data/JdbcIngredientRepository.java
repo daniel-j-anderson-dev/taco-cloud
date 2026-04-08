@@ -1,5 +1,7 @@
 package tacos.data;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,6 +16,13 @@ public class JdbcIngredientRepository implements IngredientRepository {
 
     public JdbcIngredientRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    private Ingredient rowToIngredient(ResultSet row, int rowIndex) throws SQLException {
+        return new Ingredient(
+                row.getString("id"),
+                row.getString("name"),
+                Ingredient.Kind.valueOf(row.getString("kind")));
     }
 
     @Override
