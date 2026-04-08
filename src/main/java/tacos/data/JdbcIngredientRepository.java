@@ -18,7 +18,7 @@ public class JdbcIngredientRepository implements IngredientRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private Ingredient rowToIngredient(ResultSet row, int rowIndex) throws SQLException {
+    private static Ingredient rowToIngredient(ResultSet row, int _rowIndex) throws SQLException {
         return new Ingredient(
                 row.getString("id"),
                 row.getString("name"),
@@ -27,8 +27,9 @@ public class JdbcIngredientRepository implements IngredientRepository {
 
     @Override
     public Iterable<Ingredient> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        return this.jdbcTemplate.query(
+                "select id, name, kind from Ingredient",
+                JdbcIngredientRepository::rowToIngredient);
     }
 
     @Override
