@@ -7,13 +7,14 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import tacos.Ingredient;
+import tacos.data.MockFixedIngredientRepository;
 
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
     private Map<String, Ingredient> ingredientMap = new HashMap<>();
 
     public IngredientByIdConverter() {
-        this.ingredientMap = MockIngredientDataBase.INGREDIENT_BY_ID;
+        this.ingredientMap = MockFixedIngredientRepository.INGREDIENT_BY_ID;
     }
 
     @Override
