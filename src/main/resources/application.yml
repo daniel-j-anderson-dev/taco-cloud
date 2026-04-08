@@ -9,5 +9,5 @@ logging:
   level:
     root: INFO
     tacos: DEBUG
-    "[org.springframework.web]": DEBUG
-    "[org.hibernate]": WARN
+    # "[org.springframework.web]": DEBUG
+    # "[org.hibernate]": WARN
