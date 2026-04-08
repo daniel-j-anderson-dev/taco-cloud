@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: taco-cloud
+  datasource:
+    generate-unique-name: false
+    name: tacocloud
+
+logging:
+  level:
+    root: INFO
+    tacos: DEBUG
+    "[org.springframework.web]": DEBUG
+    "[org.hibernate]": WARN
