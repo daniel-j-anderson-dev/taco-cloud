@@ -1,6 +1,7 @@
 package tacos;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -13,6 +14,12 @@ import lombok.Data;
 
 @Data
 public class TacoOrder {
+    private static final long SERIAL_VERSION_ID = 1L;
+
+    private Long id;
+
+    private Date placedAt;
+
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
     
