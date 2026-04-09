@@ -1,5 +1,7 @@
 package tacos.web;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +41,7 @@ public class OrderController {
         if (validationErrors.hasErrors()) {
             return "orderForm";
         }
+        order.setPlacedAt(new Date());
         var _altered_order = this.orderRepository.save(order);
         log.info("Order submitted: {}", order);
         sessionStatus.setComplete();
