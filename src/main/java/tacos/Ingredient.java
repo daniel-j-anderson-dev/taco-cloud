@@ -19,9 +19,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class Ingredient implements Persistable<String> {
     @Id
-    private final String id;
-    private final String name;
-    private final Kind kind;
+    private String id;
+    private String name;
+    private Kind kind;
 
     @Transient
     private boolean isNew = false;
@@ -32,14 +32,5 @@ public class Ingredient implements Persistable<String> {
         public static Stream<Kind> valuesStream() {
             return Arrays.stream(Kind.values());
         }
-    }
-
-    public void setIsNew(boolean isNew) {
-        this.isNew = isNew;
-    }
-
-    @Override
-    public boolean isNew() {
-        return this.isNew;
     }
 }
