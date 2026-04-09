@@ -1,4 +1,4 @@
-package tacos.web;
+package tacos.controllers;
 
 import java.util.List;
 import java.util.Map;
@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import jakarta.validation.Valid;
 
 import lombok.extern.slf4j.Slf4j;
-
-import tacos.Ingredient;
-import tacos.Taco;
-import tacos.TacoOrder;
 import tacos.data.IngredientRepository;
+import tacos.model.Ingredient;
+import tacos.model.Taco;
+import tacos.model.TacoOrder;
 
 @Slf4j
 @Controller

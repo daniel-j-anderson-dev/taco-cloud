@@ -1,4 +1,4 @@
-package tacos.web;
+package tacos.controllers;
 
 import java.util.Date;
 
@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.validation.Valid;
 
 import lombok.extern.slf4j.Slf4j;
-
-import tacos.TacoOrder;
 import tacos.data.OrderRepository;
+import tacos.model.TacoOrder;
 
 @Slf4j
 @Controller
