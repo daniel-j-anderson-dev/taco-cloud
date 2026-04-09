@@ -39,7 +39,7 @@ public class OrderController {
         if (validationErrors.hasErrors()) {
             return "orderForm";
         }
-        this.orderRepository.save(order);
+        var _altered_order = this.orderRepository.save(order);
         log.info("Order submitted: {}", order);
         sessionStatus.setComplete();
 
