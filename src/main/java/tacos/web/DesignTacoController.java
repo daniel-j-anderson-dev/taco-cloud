@@ -1,8 +1,10 @@
 package tacos.web;
 
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -10,10 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import jakarta.validation.Valid;
-
-import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +31,6 @@ public class DesignTacoController {
 
     private final IngredientRepository INGREDIENT_REPOSITORY;
 
-    @Autowired
     public DesignTacoController(IngredientRepository ingredientRepository) {
         this.INGREDIENT_REPOSITORY = ingredientRepository;
     }
@@ -44,8 +44,8 @@ public class DesignTacoController {
                         // key producer
                         kind -> kind.toString().toLowerCase(),
                         // value producer
-                        kind -> ingredients
-                                .stream()
+                        kind -> StreamSupport
+                                .stream(ingredients.spliterator(), false)
                                 .filter(ingredient -> ingredient.getKind().equals(kind))
                                 .collect(Collectors.toList())));
         model.addAllAttributes(ingredients_by_kind);
