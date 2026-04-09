@@ -29,15 +29,15 @@ import tacos.data.IngredientRepository;
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
-    private final IngredientRepository INGREDIENT_REPOSITORY;
+    private final IngredientRepository ingredientRepository;
 
     public DesignTacoController(IngredientRepository ingredientRepository) {
-        this.INGREDIENT_REPOSITORY = ingredientRepository;
+        this.ingredientRepository = ingredientRepository;
     }
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        var ingredients = this.INGREDIENT_REPOSITORY.findAll();
+        var ingredients = this.ingredientRepository.findAll();
         var ingredients_by_kind = Ingredient.Kind
                 .valuesStream()
                 .collect(Collectors.toMap(
